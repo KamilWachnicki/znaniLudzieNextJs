@@ -1,10 +1,10 @@
 import PageLayout from "@/components/PageLayout";
-import Events from "@/components/Events";
+import Logout from "@/components/Logout";
 
 export default function Home() {
     return (
         <PageLayout>
-            <Events />
+            <Logout />
         </PageLayout>
     );
 }

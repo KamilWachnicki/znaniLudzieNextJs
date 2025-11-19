@@ -1,15 +1,10 @@
-import Nav from "@/components/nav";
-import Footer from "@/components/footer"
-import People from "@/components/people"
+import PageLayout from "@/components/PageLayout";
+import People from "@/components/People";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col">
-      <div className="flex min-h-screen bg-gray-50">
-        <Nav />
-        <People />
-      </div>
-      <Footer />
-    </div>
-  );
+    return (
+        <PageLayout>
+            <People />
+        </PageLayout>
+    );
 }
