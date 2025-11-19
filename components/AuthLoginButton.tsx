@@ -3,7 +3,7 @@ import LogoutButton from "@/components/LogoutButton";
 import {cookies} from "next/headers";
 
 
-export default async function AuthButton() {
+export default async function AuthLoginButton() {
     const cookieStore = await cookies();
     const token = cookieStore.get("authButton")
 

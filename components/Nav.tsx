@@ -1,6 +1,6 @@
 import NavButton from "./NavButton";
 import Image from "next/image";
-import AuthButton from "./AuthButton";
+import AuthLoginButton from "./AuthLoginButton";
 
 type NavItem = {
     text: string;
@@ -30,7 +30,7 @@ export default function Nav() {
                 </p>
             </div>
             <div className="flex flex-col gap-3 w-full">
-                <AuthButton />
+                <AuthLoginButton />
                 {navigationItems.map((item : NavItem,index) => (
                     <NavButton key={index} text={item.text} href={item.href} icon={item.icon} />
                 ))}
