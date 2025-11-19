@@ -1,5 +1,18 @@
 import NavButton from "./navButton";
 import Image from "next/image";
+import IsLoggedIn from "./isLoggedIn";
+
+type NavItem = {
+  text: string;
+  href: string;
+  icon: string;
+};
+
+const navigationItems = [
+  { text: "Strona Główna", href: "/", icon: "/home.svg" },
+  { text: "Znani ludzie", href: "/people", icon: "/people.svg" },
+  { text: "Wydarzenia", href: "/events", icon: "/events.svg" },
+];
 
 export default function Nav() {
   return (
@@ -17,9 +30,10 @@ export default function Nav() {
         </p>
       </div>
       <div className="flex flex-col gap-3 w-full">
-        <NavButton text="Strona Główna" href="/" icon="/home.svg" />
-        <NavButton text="Znani ludzie" href="/people" icon="/people.svg" />
-        <NavButton text="Wydarzenia" href="/events" icon="/events.svg" />
+          <IsLoggedIn />
+          {navigationItems.map((item : NavItem,index) => (
+              <NavButton key={index} text={item.text} href={item.href} icon={item.icon} />
+          ))}
       </div>
     </nav>
   );
