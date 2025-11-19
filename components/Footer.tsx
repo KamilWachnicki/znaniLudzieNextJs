@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="flex flex-col gap-2">
           <h2 className="text-lg font-semibold text-gray-900">Info</h2>
           <p>© {new Date().getFullYear()} Gmina Kolbuszowa. Wszystkie prawa zastrzeżone.</p>
-          <p>Strona stworzona do pokazania znanych ludzi w gminie.</p>
+          <p>Strona stworzona do pokazania znanych ludzi oraz wydarzen w gminie.</p>
         </div>
 
       </div>
