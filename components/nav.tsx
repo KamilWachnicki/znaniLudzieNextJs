@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Nav() {
   return (
-    <nav className="h-screen w-64 bg-blue-900 text-gray-800 flex flex-col p-4 gap-4 shadow-lg border-r border-gray-200">
+    <nav className="h-screen w-[260px] shrink-0 bg-blue-900 text-gray-800 flex flex-col p-4 gap-4 shadow-lg border-r border-gray-200">
       <div className="flex flex-col items-center mt-4 mb-4">
         <Image
           src="/herb.png"
@@ -19,7 +19,7 @@ export default function Nav() {
       <div className="flex flex-col gap-3 w-full">
         <NavButton text="Strona Główna" href="/" icon="/home.svg" />
         <NavButton text="Znani ludzie" href="/people" icon="/people.svg" />
-        <NavButton text="Wydarzenia" href="/people" icon="/events.svg" />
+        <NavButton text="Wydarzenia" href="/events" icon="/events.svg" />
       </div>
     </nav>
   );
