@@ -1,6 +1,7 @@
 import NavButton from "./NavButton";
 import Image from "next/image";
 import AuthLoginButton from "./AuthLoginButton";
+import AuthAddpplButton from "./AuthAddpplButton";
 import AuthQrCodeButton from "./AuthQrCodeButton";
 import CookiePrompt from "./CookiePrompt";
 
@@ -37,6 +38,7 @@ export default function Nav() {
                     <NavButton key={index} text={item.text} href={item.href} icon={item.icon} />
                 ))}
                 <AuthQrCodeButton />
+                <AuthAddpplButton />
                 <CookiePrompt />
             </div>
         </nav>
