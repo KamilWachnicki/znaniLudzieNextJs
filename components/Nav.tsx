@@ -1,6 +1,8 @@
 import NavButton from "./NavButton";
 import Image from "next/image";
 import AuthLoginButton from "./AuthLoginButton";
+import AuthQrCodeButton from "./AuthQrCodeButton";
+import CookiePrompt from "./CookiePrompt";
 
 type NavItem = {
     text: string;
@@ -31,9 +33,11 @@ export default function Nav() {
             </div>
             <div className="flex flex-col gap-3 w-full">
                 <AuthLoginButton />
-                {navigationItems.map((item : NavItem,index) => (
+                {navigationItems.map((item: NavItem, index) => (
                     <NavButton key={index} text={item.text} href={item.href} icon={item.icon} />
                 ))}
+                <AuthQrCodeButton />
+                <CookiePrompt />
             </div>
         </nav>
     );
