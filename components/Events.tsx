@@ -12,7 +12,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("/events.json");
+        const res = await fetch("/api/events/get");
         if (!res.ok) throw new Error("Failed to fetch events data");
         const data = await res.json();
         setEvents(Array.isArray(data) ? data : []);

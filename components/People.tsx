@@ -12,7 +12,7 @@ export default function People() {
   useEffect(() => {
     const fetchPeople = async () => {
       try {
-        const res = await fetch("/people.json");
+        const res = await fetch("/api/people/get");
         if (!res.ok) throw new Error("Failed to fetch people data");
         const data = await res.json();
         // store array directly

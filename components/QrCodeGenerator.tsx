@@ -33,7 +33,7 @@ export default function QrCodeGenerator() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const url = selectedCategory === "people" ? "/people.json" : "/events.json";
+                const url = selectedCategory === "people" ? "/api/people/get" : "/api/events/get";
                 const res = await fetch(url);
                 const data: Item[] = await res.json();
                 setItems(data);

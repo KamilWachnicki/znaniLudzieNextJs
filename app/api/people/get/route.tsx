@@ -14,7 +14,7 @@ export async function GET() {
 
         const data = await collection.find({}).toArray();
 
-        return NextResponse.json({ data });
+        return NextResponse.json(data);
     } catch (err) {
         console.error("MongoDB fetch error:", err);
         return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
