@@ -3,16 +3,21 @@ import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI!;
 
-export async function GET() {
+export async function GET(req: Request) {
     const client = new MongoClient(uri);
 
     try {
         await client.connect();
         const db = client.db("znani_ludzie");
-        const collection = db.collection("events"); 
+        const collection = db.collection("events");
 
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get("id");
 
-        const data = await collection.find({}).toArray();
+        let filter = {};
+        if (id) filter = { id };
+
+        const data = await collection.find(filter).toArray();
 
         return NextResponse.json(data);
     } catch (err) {

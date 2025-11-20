@@ -8,7 +8,7 @@
     "image": "/albert_einstein.jpg",
     "startDate": "2025-06-15",
     "endDate": "2025-06-17",
-    "href": "/events/festiwal-kultury",
+    "href": "/api/events/get?id=1",
     "lat": 50.06143,
     "lng": 19.93658
   },
@@ -21,7 +21,7 @@
     "image": "/albert_einstein.jpg",
     "startDate": "2025-07-20",
     "endDate": "2025-07-20",
-    "href": "/events/jarmark",
+    "href": "/api/events/get?id=2",
     "lat": 50.2441,
     "lng": 21.7767
   },
@@ -34,7 +34,7 @@
     "image": "/albert_einstein.jpg",
     "startDate": "2025-08-05",
     "endDate": "2025-08-05",
-    "href": "/events/koncert-letni",
+    "href": "/api/events/get?id=3",
     "lat": 52.2297,
     "lng": 21.0122
   },
@@ -47,7 +47,7 @@
     "image": "/albert_einstein.jpg",
     "startDate": "2025-09-10",
     "endDate": "2025-09-10",
-    "href": "/events/dzien-historii",
+    "href": "/api/events/get?id=4",
     "lat": 51.1079,
     "lng": 17.0385
   },
@@ -60,7 +60,7 @@
     "image": "/albert_einstein.jpg",
     "startDate": "2025-10-18",
     "endDate": "2025-10-18",
-    "href": "/events/noc-teatrow",
+    "href": "/api/events/get?id=5",
     "lat": 50.0647,
     "lng": 19.9450
   }
