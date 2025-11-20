@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Festiwal Kultury Regionalnej",
+    "description": "Trzydniowe święto kultury lokalnej z występami zespołów folklorystycznych, warsztatami rękodzieła i degustacją potraw regionalnych.",
+    "category": "events",
+    "image": "/images/festiwal_kultury.jpg",
+    "startDate": "2025-06-15",
+    "endDate": "2025-06-17",
+    "href": "/events/festiwal-kultury"
+  },
+  {
+    "id": "2",
+    "title": "Jarmark Kolbuszowski",
+    "description": "Tradycyjny jarmark z lokalnymi wyrobami rzemieślniczymi, produktami spożywczymi i atrakcjami dla całej rodziny.",
+    "category": "events",
+    "image": "/images/jarmark_kolbuszowski.jpg",
+    "startDate": "2025-07-20",
+    "endDate": "2025-07-20",
+    "href": "/events/jarmark"
+  },
+  {
+    "id": "3",
+    "title": "Koncert Letni w Parku",
+    "description": "Wieczorny koncert muzyki klasycznej i rozrywkowej w pięknej scenerii parku miejskiego.",
+    "category": "events",
+    "image": "/images/koncert_letni.jpg",
+    "startDate": "2025-08-05",
+    "endDate": "2025-08-05",
+    "href": "/events/koncert-letni"
+  },
+  {
+    "id": "4",
+    "title": "Dzień Historii Lokalnej",
+    "description": "Spotkania edukacyjne i warsztaty historyczne dla mieszkańców, poświęcone lokalnym legendom i historii.",
+    "category": "events",
+    "image": "/images/dzien_historii.jpg",
+    "startDate": "2025-09-10",
+    "endDate": "2025-09-10",
+    "href": "/events/dzien-historii"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Jan Kowalski",
+    "description": "Znany lokalny człowiek, działacz społeczny i historyk.",
+    "category": "people",
+    "image": "/images/jan_kowalski.jpg",
+    "birthDate": "1950-03-12",
+    "deathDate": "2010-07-20",
+    "href": "/people/1"
+  },
+  {
+    "id": "2",
+    "title": "Anna Nowak",
+    "description": "Znana lokalna osoba, działaczka kulturalna i edukacyjna.",
+    "category": "people",
+    "image": "/images/anna_nowak.jpg",
+    "birthDate": "1975-11-05",
+    "deathDate": null,
+    "href": "/people/2"
+  },
+  {
+    "id": "3",
+    "title": "Piotr Wiśniewski",
+    "description": "Mieszkaniec, który przyczynił się do rozwoju lokalnych inicjatyw.",
+    "category": "people",
+    "image": "/images/piotr_wisniewski.jpg",
+    "birthDate": "1968-06-18",
+    "deathDate": null,
+    "href": "/people/3"
+  },
+  {
+    "id": "4",
+    "title": "Katarzyna Zielińska",
+    "description": "Znana artystka lokalna, organizuje wydarzenia kulturalne.",
+    "category": "people",
+    "image": "/images/katarzyna_zielinska.jpg",
+    "birthDate": "1982-02-14",
+    "deathDate": null,
+    "href": "/people/4"
+  }
+]
