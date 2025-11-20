@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { MongoClient } from "mongodb";
+
+const uri = process.env.MONGODB_URI!
+if (!uri) {
+  throw new Error("MONGODB_URI is not defined in environment variables");
+}
 
 export async function POST(req: NextRequest) {
+  const client = new MongoClient(uri);
+
   try {
     const { name, password } = await req.json();
 
@@ -10,26 +18,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    // Your admin user
-    const adminUser = {
-      name: "admin",
-      // your provided hash
-      passwordHash: "$2a$12$17oAQmCN2DECWAPKaUatve1K2RpyfxK1BMaimxq0CqyD9qtqITdYm",
-    };
+    await client.connect();
+    const db = client.db(process.env.MONGODB_DB!);
+    const usersCollection = db.collection("users");
 
-    // Username check
-    if (name !== adminUser.name) {
+    // Find user in DB
+    const user = await usersCollection.findOne({ name });
+    if (!user) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
     // Password check
-    const isPasswordValid = await bcrypt.compare(password, adminUser.passwordHash);
+    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
     if (!isPasswordValid) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    // Create token
-    const token = jwt.sign({ name: adminUser.name }, "TEST_SECRET", {
+    // Create JWT token
+    const token = jwt.sign({ name: user.name }, "TEST_SECRET", {
       expiresIn: "1h",
     });
 
@@ -38,8 +44,8 @@ export async function POST(req: NextRequest) {
     res.cookies.set({
       name: "token",
       value: token,
-      httpOnly: false,
-      secure: false,
+      httpOnly: true, // should be true in production
+      secure: false, // true if using https
       path: "/",
       maxAge: 60 * 60,
     });
@@ -48,5 +54,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Login error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
+  } finally {
+    await client.close();
   }
 }
