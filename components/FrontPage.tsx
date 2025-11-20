@@ -1,78 +1,82 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import LoadLeaflet from "./LoadLeaflet";
 
 type Item = {
   id: string;
-  title: string;
+  name: string;
   description: string;
   lat?: number;
   lng?: number;
-  categoryId: string;
-};
-
-type Category = {
-  id: string;
-  name: string;
+  category: "people" | "events";
 };
 
 const ItemsMap = dynamic(() => import("./ItemsMap"), { ssr: false });
 
 export default function FrontPage() {
-  const categories: Category[] = [
+  const categories = [
     { id: "all", name: "Wszystko" },
-    { id: "stories", name: "Historie" },
-    { id: "places", name: "Miejsca" },
-    { id: "news", name: "Aktualności" },
+    { id: "people", name: "Ludzie" },
+    { id: "events", name: "Wydarzenia" },
   ];
 
-  const items: Item[] = [
-    {
-      id: "1",
-      title: "Pierwsza legenda o ławce",
-      description: "Opowieść o początku projektu oraz pierwsze notatki.",
-      lat: 51.505,
-      lng: -0.09,
-      categoryId: "stories",
-    },
-    {
-      id: "2",
-      title: "Stary rynek",
-      description: "Historyczne miejsce targowe, obecnie park.",
-      lat: 51.51,
-      lng: -0.1,
-      categoryId: "places",
-    },
-    {
-      id: "3",
-      title: "Nowo dodane: Wersja 1.2",
-      description: "Ostatnio dodane informacje dla społeczności.",
-      categoryId: "news",
-    },
-  ];
-
+  const [items, setItems] = useState<Item[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [query, setQuery] = useState("");
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [peopleRes, eventsRes] = await Promise.all([
+          fetch("/people.json"),
+          fetch("/events.json"),
+        ]);
+        const peopleData = await peopleRes.json();
+        const eventsData = await eventsRes.json();
+
+        const formattedPeople: Item[] = peopleData.map((p: any) => ({
+          id: `person-${p.id}`,
+          name: p.name,
+          description: p.description,
+          lat: p.lat,
+          lng: p.lng,
+          category: "people",
+        }));
+
+        const formattedEvents: Item[] = eventsData.map((e: any) => ({
+          id: `event-${e.id}`,
+          name: e.name,
+          description: e.description,
+          lat: e.lat,
+          lng: e.lng,
+          category: "events",
+        }));
+
+        setItems([...formattedPeople, ...formattedEvents]);
+      } catch (err) {
+        console.error("Failed to fetch data", err);
+      }
+    };
+    fetchData();
+  }, []);
+
   const filteredItems = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return items.filter((it) => {
-      if (selectedCategory !== "all" && it.categoryId !== selectedCategory)
+    return items.filter((item) => {
+      if (selectedCategory !== "all" && item.category !== selectedCategory)
         return false;
       if (!q) return true;
-      return (
-        it.title.toLowerCase().includes(q) ||
-        it.description.toLowerCase().includes(q)
-      );
+      return item.name.toLowerCase().includes(q) || item.description.toLowerCase().includes(q);
     });
-  }, [selectedCategory, query]);
+  }, [items, selectedCategory, query]);
 
   return (
-    <div className="p-6 font-sans text-black">
+    <div className="p-6 font-sans text-black min-h-screen">
       <LoadLeaflet />
 
+      {/* Top Section */}
       <h1 className="text-3xl font-bold mb-4 text-black">Znani Ludzie</h1>
 
       <section className="mb-6">
@@ -97,6 +101,7 @@ export default function FrontPage() {
         </ul>
       </section>
 
+      {/* Filters */}
       <section className="mb-6 flex flex-wrap items-center gap-4">
         <select
           value={selectedCategory}
@@ -119,6 +124,7 @@ export default function FrontPage() {
         />
       </section>
 
+      {/* Map */}
       <section className="w-full mt-6">
         <h3 className="text-lg font-semibold mb-2 text-black">Mapa</h3>
         <ItemsMap items={filteredItems} />

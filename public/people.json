@@ -1,42 +1,50 @@
 [
   {
     "id": "1",
-    "title": "Jan Kowalski",
+    "name": "Jan Kowalski",
     "description": "Znany lokalny człowiek, działacz społeczny i historyk.",
-    "category": "people",
-    "image": "/images/jan_kowalski.jpg",
+    "category": "Historian",
+    "image": "/albert_einstein.jpg",
     "birthDate": "1950-03-12",
     "deathDate": "2010-07-20",
-    "href": "/people/1"
+    "href": "/people/1",
+    "lat": 50.0647,
+    "lng": 19.9450
   },
   {
     "id": "2",
-    "title": "Anna Nowak",
+    "name": "Anna Nowak",
     "description": "Znana lokalna osoba, działaczka kulturalna i edukacyjna.",
-    "category": "people",
+    "category": "Educator",
     "image": "/images/anna_nowak.jpg",
     "birthDate": "1975-11-05",
     "deathDate": null,
-    "href": "/people/2"
+    "href": "/people/2",
+    "lat": 52.2297,
+    "lng": 21.0122
   },
   {
     "id": "3",
-    "title": "Piotr Wiśniewski",
+    "name": "Piotr Wiśniewski",
     "description": "Mieszkaniec, który przyczynił się do rozwoju lokalnych inicjatyw.",
-    "category": "people",
+    "category": "Community Organizer",
     "image": "/images/piotr_wisniewski.jpg",
     "birthDate": "1968-06-18",
     "deathDate": null,
-    "href": "/people/3"
+    "href": "/people/3",
+    "lat": 51.7592,
+    "lng": 19.4550
   },
   {
     "id": "4",
-    "title": "Katarzyna Zielińska",
+    "name": "Katarzyna Zielińska",
     "description": "Znana artystka lokalna, organizuje wydarzenia kulturalne.",
-    "category": "people",
+    "category": "Artist",
     "image": "/images/katarzyna_zielinska.jpg",
     "birthDate": "1982-02-14",
     "deathDate": null,
-    "href": "/people/4"
+    "href": "/people/4",
+    "lat": 53.4285,
+    "lng": 14.5528
   }
 ]

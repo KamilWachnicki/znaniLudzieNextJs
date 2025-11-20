@@ -1,67 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EventCard from "./EventCard";
 import SearchBar from "./SearchBar";
 
-const sampleEvents = [
-    {
-        name: "Festiwal Kultury Regionalnej",
-        startDate: "2025-06-15",
-        endDate: "2025-06-17",
-        description: "Trzydniowe święto kultury lokalnej z wystepami zespołów folklorystycznych, warsztatami rękodzieła i degustacją potraw regionalnych.",
-        image: "/albert_einstein.jpg",
-        href: "/events/festiwal-kultury"
-    },
-    {
-        name: "Jarmark Kolbuszowski",
-        startDate: "2025-07-20",
-        endDate: "2025-07-20",
-        description: "Tradycyjny jarmark z lokalnymi wyrobami rzemieślniczymi, produktami spożywczymi i atrakcjami dla całej rodziny.",
-        image: "/albert_einstein.jpg",
-        href: "/events/jarmark"
-    },
-    {
-        name: "Koncert Letni w Parku",
-        startDate: "2025-08-05",
-        endDate: "2025-08-05",
-        description: "Wieczorny koncert muzyki klasycznej i rozrywkowej w pięknej scenerii parku miejskiego.",
-        image: "/albert_einstein.jpg",
-        href: "/events/koncert-letni"
-    }
-];
-
 export default function Events() {
-    const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const [events, setEvents] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    const filtered = sampleEvents.filter((event) =>
-        event.name.toLowerCase().includes(query.toLowerCase()) ||
-        event.description.toLowerCase().includes(query.toLowerCase()) ||
-        event.startDate.includes(query) ||
-        event.endDate.includes(query)
-    );
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch("/events.json");
+        if (!res.ok) throw new Error("Failed to fetch events data");
+        const data = await res.json();
+        setEvents(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error(err);
+        setEvents([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <div className="flex flex-col w-full p-8 gap-6">
-            <SearchBar
-                value={query}
-                onChange={setQuery}
-                placeholder="Szukaj wydarzeń..."
+    fetchEvents();
+  }, []);
+
+  const filtered = (events || []).filter(
+    (event) =>
+      event.name?.toLowerCase().includes(query.toLowerCase()) ||
+      event.description?.toLowerCase().includes(query.toLowerCase()) ||
+      event.startDate?.includes(query) ||
+      event.endDate?.includes(query)
+  );
+
+  if (loading) {
+    return <p className="p-8 text-gray-700">Ładowanie wydarzeń...</p>;
+  }
+
+  return (
+    <div className="flex flex-col w-full p-8 gap-6">
+      <SearchBar value={query} onChange={setQuery} placeholder="Szukaj wydarzeń..." />
+
+      <div className="flex flex-col gap-6">
+        {filtered.length > 0 ? (
+          filtered.map((event) => (
+            <EventCard
+              key={event.id}
+              name={event.name ?? "Brak nazwy"}
+              startDate={event.startDate ?? ""}
+              endDate={event.endDate ?? ""}
+              description={event.description ?? ""}
+              image={event.image ?? "/placeholder.jpg"}
+              href={event.href ?? "#"}
             />
-
-            <div className="flex flex-col gap-6">
-                {filtered.map((event) => (
-                    <EventCard
-                        key={event.name}
-                        name={event.name}
-                        startDate={event.startDate}
-                        endDate={event.endDate}
-                        description={event.description}
-                        image={event.image}
-                        href={event.href}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+          ))
+        ) : (
+          <p className="text-gray-600">Nie znaleziono wydarzeń pasujących do wyszukiwania.</p>
+        )}
+      </div>
+    </div>
+  );
 }
