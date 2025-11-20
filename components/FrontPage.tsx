@@ -31,8 +31,8 @@ export default function FrontPage() {
     const fetchData = async () => {
       try {
         const [peopleRes, eventsRes] = await Promise.all([
-          fetch("/people.json"),
-          fetch("/events.json"),
+          fetch("/api/people/get"),
+          fetch("/api/events/get"),
         ]);
         const peopleData = await peopleRes.json();
         const eventsData = await eventsRes.json();
@@ -77,7 +77,6 @@ export default function FrontPage() {
     <div className="p-6 font-sans text-black min-h-screen">
       <LoadLeaflet />
 
-      {/* Top Section */}
       <h1 className="text-3xl font-bold mb-4 text-black">Znani Ludzie</h1>
 
       <section className="mb-6">
@@ -102,7 +101,6 @@ export default function FrontPage() {
         </ul>
       </section>
 
-      {/* Filters */}
       <section className="mb-6 flex flex-wrap items-center gap-4">
         <select
           value={selectedCategory}
@@ -125,7 +123,6 @@ export default function FrontPage() {
         />
       </section>
 
-      {/* Map */}
       <section className="w-full mt-6">
         <h3 className="text-lg font-semibold mb-2 text-black">Mapa</h3>
         <ItemsMap items={filteredItems} />
