@@ -51,7 +51,7 @@ export default function Events() {
               name={event.name ?? "Brak nazwy"}
               startDate={event.startDate ?? ""}
               endDate={event.endDate ?? ""}
-              description={event.description ?? ""}
+              description={event.shortDescription ?? ""}
               image={event.image ?? "/placeholder.jpg"}
               href={event.href ?? "#"}
             />

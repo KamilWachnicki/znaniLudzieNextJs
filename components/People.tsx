@@ -48,7 +48,7 @@ export default function People() {
               key={person.id}
               name={person.name ?? "Brak imienia"}
               category={person.category ?? ""}
-              description={person.description ?? ""}
+              description={person.shortDescription ?? ""}
               image={person.image ?? "/placeholder.jpg"}
               href={person.href ?? "#"}
             />

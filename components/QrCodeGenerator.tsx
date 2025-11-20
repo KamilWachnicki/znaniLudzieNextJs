@@ -8,7 +8,8 @@ import QRCard from "./QrCard";
 
 type Item = {
     id: string;
-    title: string;
+    name: string;
+    shortDescription: string;
     description: string;
     category: "people" | "events";
     image: string;
@@ -48,8 +49,8 @@ export default function QrCodeGenerator() {
         return items.filter((item) => {
             if (!q) return true;
             return (
-                item.title.toLowerCase().includes(q) ||
-                item.description.toLowerCase().includes(q)
+                item.name.toLowerCase().includes(q) ||
+                item.shortDescription.toLowerCase().includes(q)
             );
         });
     }, [items, query]);
@@ -90,8 +91,8 @@ export default function QrCodeGenerator() {
                     <QRCard
                         key={item.id}
                         id={item.id}
-                        title={item.title}
-                        description={item.description}
+                        title={item.name}
+                        description={item.shortDescription}
                         category={item.category === "people" ? "Ludzie" : undefined}
                         startDate={item.startDate}
                         endDate={item.endDate}
