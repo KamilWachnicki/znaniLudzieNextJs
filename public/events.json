@@ -2,9 +2,10 @@
   {
     "id": "1",
     "name": "Festiwal Kultury Regionalnej",
-    "description": "Trzydniowe święto kultury lokalnej z występami zespołów folklorystycznych, warsztatami rękodzieła i degustacją potraw regionalnych.",
+    "shortDescription": "Trzydniowe święto kultury lokalnej z występami zespołów folklorystycznych i lokalnym rękodziełem.",
+    "description": "Festiwal Kultury Regionalnej to trzydniowe wydarzenie celebrujące tradycje i zwyczaje regionu. Odbywają się tu występy lokalnych zespołów folklorystycznych, koncerty muzyki tradycyjnej i nowoczesnej inspirowanej kulturą ludową. Goście mogą uczestniczyć w warsztatach rękodzieła, spróbować regionalnych potraw, a także obejrzeć prezentacje strojów i obrzędów charakterystycznych dla regionu. Wydarzenie przyciąga zarówno mieszkańców, jak i turystów, oferując bogaty program edukacyjny i rozrywkowy, który pozwala poczuć ducha lokalnej tradycji.",
     "category": "events",
-    "image": "/images/festiwal_kultury.jpg",
+    "image": "/albert_einstein.jpg",
     "startDate": "2025-06-15",
     "endDate": "2025-06-17",
     "href": "/events/festiwal-kultury",
@@ -14,9 +15,10 @@
   {
     "id": "2",
     "name": "Jarmark Kolbuszowski",
-    "description": "Tradycyjny jarmark z lokalnymi wyrobami rzemieślniczymi, produktami spożywczymi i atrakcjami dla całej rodziny.",
+    "shortDescription": "Tradycyjny jarmark z lokalnymi wyrobami rzemieślniczymi i atrakcjami dla całej rodziny.",
+    "description": "Jarmark Kolbuszowski to jednodniowe wydarzenie łączące tradycję z atrakcjami dla całej rodziny. Odbywają się tu stoiska z rękodziełem artystycznym, regionalnymi produktami spożywczymi oraz pamiątkami. Goście mogą spróbować lokalnych specjałów, wziąć udział w konkursach, pokazach rzemieślniczych i zajęciach dla dzieci. Wydarzenie promuje lokalnych twórców, integruje społeczność oraz pozwala na poznanie bogatej historii i tradycji regionu. Jarmark przyciąga turystów i mieszkańców, oferując zarówno rozrywkę, jak i edukację o lokalnej kulturze.",
     "category": "events",
-    "image": "/images/jarmark_kolbuszowski.jpg",
+    "image": "/albert_einstein.jpg",
     "startDate": "2025-07-20",
     "endDate": "2025-07-20",
     "href": "/events/jarmark",
@@ -26,9 +28,10 @@
   {
     "id": "3",
     "name": "Koncert Letni w Parku",
-    "description": "Wieczorny koncert muzyki klasycznej i rozrywkowej w pięknej scenerii parku miejskiego.",
+    "shortDescription": "Wieczorny koncert muzyki klasycznej i rozrywkowej w miejskim parku.",
+    "description": "Koncert Letni w Parku to wyjątkowe wydarzenie muzyczne odbywające się w otoczeniu zieleni miejskiego parku. W programie znajdują się zarówno utwory klasyczne, jak i nowoczesne aranżacje muzyki rozrywkowej. Goście mogą cieszyć się wyjątkową atmosferą, słuchając koncertów na świeżym powietrzu, piknikując lub spacerując po parku. Wydarzenie jest otwarte dla wszystkich grup wiekowych, a jego celem jest promowanie muzyki i sztuki w przestrzeni publicznej, integracja społeczności oraz stworzenie okazji do relaksu i spotkań kulturalnych w letnie wieczory.",
     "category": "events",
-    "image": "/images/koncert_letni.jpg",
+    "image": "/albert_einstein.jpg",
     "startDate": "2025-08-05",
     "endDate": "2025-08-05",
     "href": "/events/koncert-letni",
@@ -38,13 +41,27 @@
   {
     "id": "4",
     "name": "Dzień Historii Lokalnej",
-    "description": "Spotkania edukacyjne i warsztaty historyczne dla mieszkańców, poświęcone lokalnym legendom i historii.",
+    "shortDescription": "Warsztaty i spotkania edukacyjne poświęcone lokalnej historii i legendom.",
+    "description": "Dzień Historii Lokalnej to jednodniowe wydarzenie edukacyjne poświęcone historii i dziedzictwu regionu. Uczestnicy mogą wziąć udział w warsztatach historycznych, prelekcjach, pokazach dawnych rzemiosł i rekonstrukcjach wydarzeń z przeszłości. Program obejmuje także prezentacje legend lokalnych, zwiedzanie zabytków oraz interaktywne zajęcia dla dzieci i dorosłych. Wydarzenie ma na celu pogłębienie wiedzy o historii regionu, integrację społeczności oraz zainteresowanie mieszkańców i turystów bogactwem kulturowym i historycznym okolicy.",
     "category": "events",
-    "image": "/images/dzien_historii.jpg",
+    "image": "/albert_einstein.jpg",
     "startDate": "2025-09-10",
     "endDate": "2025-09-10",
     "href": "/events/dzien-historii",
     "lat": 51.1079,
     "lng": 17.0385
+  },
+  {
+    "id": "5",
+    "name": "Noc Teatrów i Sztuki",
+    "shortDescription": "Wieczorne wydarzenie łączące spektakle teatralne, performance i wystawy w przestrzeni miejskiej.",
+    "description": "Noc Teatrów i Sztuki to wyjątkowe, kilkugodzinne wydarzenie kulturalne odbywające się wieczorem w różnych punktach miasta. W programie znajdują się spektakle teatralne, performance artystyczne, pokazy multimedialne i wystawy plastyczne. Goście mogą swobodnie przemieszczać się między lokalizacjami, odkrywając różnorodne formy sztuki współczesnej i klasycznej. Wydarzenie promuje lokalnych artystów, integruje mieszkańców oraz daje okazję do odkrycia nowych talentów i niecodziennych form wyrazu artystycznego. Noc Teatrów i Sztuki staje się platformą do rozmów, wymiany doświadczeń i inspiracji kulturalnej.",
+    "category": "events",
+    "image": "/albert_einstein.jpg",
+    "startDate": "2025-10-18",
+    "endDate": "2025-10-18",
+    "href": "/events/noc-teatrow",
+    "lat": 50.0647,
+    "lng": 19.9450
   }
 ]

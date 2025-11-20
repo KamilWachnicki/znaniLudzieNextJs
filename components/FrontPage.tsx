@@ -7,6 +7,7 @@ import LoadLeaflet from "./LoadLeaflet";
 type Item = {
   id: string;
   name: string;
+  shortDescription: string;
   description: string;
   lat?: number;
   lng?: number;
@@ -39,7 +40,7 @@ export default function FrontPage() {
         const formattedPeople: Item[] = peopleData.map((p: any) => ({
           id: `person-${p.id}`,
           name: p.name,
-          description: p.description,
+          description: p.shortDescription,
           lat: p.lat,
           lng: p.lng,
           category: "people",
@@ -48,7 +49,7 @@ export default function FrontPage() {
         const formattedEvents: Item[] = eventsData.map((e: any) => ({
           id: `event-${e.id}`,
           name: e.name,
-          description: e.description,
+          description: e.shortDescription,
           lat: e.lat,
           lng: e.lng,
           category: "events",

@@ -8,6 +8,7 @@ import L from "leaflet";
 type Item = {
   id: string;
   name: string;
+  shortDescription: string;
   description: string;
   lat?: number;
   lng?: number;
