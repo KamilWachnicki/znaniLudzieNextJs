@@ -1,9 +1,8 @@
 "use client";
 
-import  "./LoadLeaflet"
+import "./LoadLeaflet";
 import React, { JSX, useMemo, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-
+import ItemsMap from "./ItemsMap";
 
 type Item = {
     id: string;
@@ -21,97 +20,83 @@ type Category = {
 
 export default function FrontPage(): JSX.Element {
     const categories: Category[] = [
-        { id: "all", name: "All" },
-        { id: "stories", name: "Stories" },
-        { id: "places", name: "Places" },
-        { id: "news", name: "News" },
+        { id: "all", name: "Wszystko" },
+        { id: "stories", name: "Historie" },
+        { id: "places", name: "Miejsca" },
+        { id: "news", name: "Aktualności" },
     ];
 
     const items: Item[] = [
         {
             id: "1",
-            title: "The first Lawka tale",
-            description: "Origin story and early notes.",
+            title: "Pierwsza legenda o ławce",
+            description: "Opowieść o początku projektu oraz pierwsze notatki.",
             lat: 51.505,
             lng: -0.09,
             categoryId: "stories",
         },
         {
             id: "2",
-            title: "Old market place",
-            description: "Historical market location, now a park.",
+            title: "Stary rynek",
+            description: "Historyczne miejsce targowe, obecnie park.",
             lat: 51.51,
             lng: -0.1,
             categoryId: "places",
         },
         {
             id: "3",
-            title: "Release v1.2",
-            description: "Added search and map features.",
+            title: "Nowo dodane: Wersja 1.2",
+            description: "Ostatnio dodane informacje dla społeczności.",
             categoryId: "news",
         },
     ];
 
-    const [selectedCategory, setSelectedCategory] = useState<string>("all");
-    const [query, setQuery] = useState<string>("");
+    const [selectedCategory, setSelectedCategory] = useState("all");
+    const [query, setQuery] = useState("");
 
     const filteredItems = useMemo(() => {
         const q = query.trim().toLowerCase();
         return items.filter((it) => {
-            if (selectedCategory !== "all" && it.categoryId !== selectedCategory) {
-                return false;
-            }
+            if (selectedCategory !== "all" && it.categoryId !== selectedCategory) return false;
             if (!q) return true;
             return (
                 it.title.toLowerCase().includes(q) ||
                 it.description.toLowerCase().includes(q)
             );
         });
-    }, [items, selectedCategory, query]);
-
-    const markerPositions = filteredItems
-        .filter((it) => typeof it.lat === "number" && typeof it.lng === "number")
-        .map((it) => [it.lat as number, it.lng as number] as [number, number]);
-
-    const center: [number, number] = markerPositions.length
-        ? markerPositions[0]
-        : [20, 0];
+    }, [selectedCategory, query]);
 
     return (
-        <div className="p-6 font-sans">
-            <h1 className="text-3xl font-bold mb-4">Lawka-Legend</h1>
+        <div className="p-6 font-sans text-black">
+            <h1 className="text-3xl font-bold mb-4 text-black">Znani Ludzie</h1>
 
             <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Why this project exists</h2>
+                <h2 className="text-xl font-semibold mb-2 text-black">Cel projektu</h2>
                 <p className="text-gray-700 mb-4">
-                    Lawka-Legend was created to preserve and share local legends, places,
-                    and recent updates in a single, searchable map and content portal.
+                    Projekt powstał, aby zachować i udostępniać lokalne historie, miejsca - wszystko w jednym miejscu,
+                    powiązane z interaktywną mapą.
                 </p>
 
-                <h2 className="text-xl font-semibold mb-2">Who made it and why</h2>
+                <h2 className="text-xl font-semibold mb-2 text-black">Kto go tworzy</h2>
                 <p className="text-gray-700 mb-4">
-                    Built by contributors who care about cultural heritage and
-                    discoverability. The project aims to make stories easy to find and
-                    place them on a map so context is preserved.
+                    Strona rozwijana jest przez osoby, które chcą zwiększyć widoczność
+                    lokalnego dziedzictwa i umożliwić łatwe odkrywanie ciekawych osób
+                    oraz miejsc.
                 </p>
 
-                <h2 className="text-xl font-semibold mb-2">Latest changes</h2>
+                <h2 className="text-xl font-semibold mb-2 text-black">Aktualności</h2>
                 <ul className="list-disc list-inside text-gray-700">
-                    <li>Search-only filter across titles and descriptions</li>
-                    <li>Category dropdown to narrow results</li>
-                    <li>Interactive Leaflet map showing filtered items</li>
+                    <li>Ostatnio dodane historie i wpisy</li>
+                    <li>Nowe miejsca na mapie</li>
+                    <li>Zmiany zgłaszane przez mieszkańców</li>
                 </ul>
             </section>
 
             <section className="mb-6 flex flex-wrap items-center gap-4">
-                <label htmlFor="category-select" className="sr-only">
-                    Category
-                </label>
                 <select
-                    id="category-select"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="px-3 py-2 border rounded-md bg-white text-sm"
+                    className="px-3 py-2 border rounded-md bg-white text-sm text-black"
                 >
                     {categories.map((c) => (
                         <option key={c.id} value={c.id}>
@@ -122,60 +107,16 @@ export default function FrontPage(): JSX.Element {
 
                 <input
                     type="search"
-                    aria-label="Search items"
-                    placeholder="Search by title or description..."
+                    placeholder="Szukaj..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="flex-1 min-w-[220px] max-w-lg px-3 py-2 border rounded-md text-sm"
+                    className="flex-1 min-w-[220px] max-w-lg px-3 py-2 border rounded-md text-sm text-black"
                 />
             </section>
 
-            <section className="flex flex-col lg:flex-row gap-6">
-                <div className="flex-1">
-                    <h3 className="text-lg font-semibold mb-2">
-                        Results <span className="text-gray-600">({filteredItems.length})</span>
-                    </h3>
-                    {filteredItems.length === 0 && <p className="text-gray-600">No items match your search.</p>}
-                    <ul className="space-y-3 mt-3">
-                        {filteredItems.map((it) => (
-                            <li key={it.id} className="border rounded-md p-3 bg-white shadow-sm">
-                                <strong className="block text-sm font-semibold">{it.title}</strong>
-                                <div className="text-gray-600 text-sm">{it.description}</div>
-                                <div className="text-gray-500 text-xs mt-2">
-                                    Category: {categories.find((c) => c.id === it.categoryId)?.name}
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="flex-1 min-h-[320px]">
-                    <h3 className="text-lg font-semibold mb-2">Map</h3>
-                    <div className="h-80 rounded-md overflow-hidden border">
-                        <MapContainer
-                            center={center}
-                            zoom={markerPositions.length ? 13 : 2}
-                            style={{ height: "100%", width: "100%" }}
-                        >
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            {filteredItems.map(
-                                (it) =>
-                                    typeof it.lat === "number" &&
-                                    typeof it.lng === "number" && (
-                                        <Marker key={it.id} position={[it.lat, it.lng]}>
-                                            <Popup>
-                                                <strong>{it.title}</strong>
-                                                <div className="text-sm">{it.description}</div>
-                                            </Popup>
-                                        </Marker>
-                                    )
-                            )}
-                        </MapContainer>
-                    </div>
-                </div>
+            <section className="w-full mt-6">
+                <h3 className="text-lg font-semibold mb-2 text-black">Mapa</h3>
+                <ItemsMap items={filteredItems} />
             </section>
         </div>
     );
