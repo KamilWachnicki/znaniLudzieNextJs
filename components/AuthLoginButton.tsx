@@ -5,7 +5,7 @@ import {cookies} from "next/headers";
 
 export default async function AuthLoginButton() {
     const cookieStore = await cookies();
-    const token = cookieStore.get("authButton")
+    const token = cookieStore.get("token")
 
     const isLoggedIn = !!token;
     return isLoggedIn ? <LogoutButton /> : <LoginButton />;

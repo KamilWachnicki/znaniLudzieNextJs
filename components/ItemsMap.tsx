@@ -1,9 +1,8 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { JSX } from "react";
 
-export type MapItem = {
+type Item = {
     id: string;
     title: string;
     description: string;
@@ -12,38 +11,34 @@ export type MapItem = {
 };
 
 type Props = {
-    items: MapItem[];
+    items: Item[];
 };
 
-export default function ItemsMap({ items }: Props): JSX.Element {
-    const markerPositions = items
-        .filter((it) => typeof it.lat === "number" && typeof it.lng === "number")
-        .map((it) => [it.lat as number, it.lng as number] as [number, number]);
-
-    const center: [number, number] = markerPositions.length
-        ? markerPositions[0]
-        : [20, 0];
-
+export default function ItemsMap({ items }: Props) {
     return (
-        <div className="h-80 rounded-md overflow-hidden border">
-            <MapContainer center={center} zoom={markerPositions.length ? 13 : 2} style={{ height: "100%", width: "100%" }}>
-                <TileLayer
-                    attribution='&copy; OpenStreetMap'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {items.map(
-                    (it) =>
-                        typeof it.lat === "number" &&
-                        typeof it.lng === "number" && (
-                            <Marker key={it.id} position={[it.lat, it.lng]}>
-                                <Popup>
-                                    <strong className="text-black">{it.title}</strong>
-                                    <div className="text-black text-sm">{it.description}</div>
-                                </Popup>
-                            </Marker>
-                        )
-                )}
-            </MapContainer>
-        </div>
+        <MapContainer
+            center={[51.505, -0.09]}
+            zoom={13}
+            style={{ height: "400px", width: "100%" }}
+            scrollWheelZoom={true}
+        >
+            <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {items.map(
+                (item) =>
+                    item.lat &&
+                    item.lng && (
+                        <Marker key={item.id} position={[item.lat, item.lng]}>
+                            <Popup>
+                                <strong>{item.title}</strong>
+                                <br />
+                                {item.description}
+                            </Popup>
+                        </Marker>
+                    )
+            )}
+        </MapContainer>
     );
 }

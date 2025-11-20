@@ -10,29 +10,36 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    // Hardcoded test user (password hash of "test123")
-    const testUser = {
+    // Your admin user
+    const adminUser = {
       name: "admin",
+      // your provided hash
       passwordHash: "$2a$12$17oAQmCN2DECWAPKaUatve1K2RpyfxK1BMaimxq0CqyD9qtqITdYm",
     };
 
-    if (name !== testUser.name) {
+    // Username check
+    if (name !== adminUser.name) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, testUser.passwordHash);
+    // Password check
+    const isPasswordValid = await bcrypt.compare(password, adminUser.passwordHash);
     if (!isPasswordValid) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    const token = jwt.sign({ name: testUser.name }, "TEST_SECRET", { expiresIn: "1h" });
+    // Create token
+    const token = jwt.sign({ name: adminUser.name }, "TEST_SECRET", {
+      expiresIn: "1h",
+    });
 
-    const res = NextResponse.json({ message: "Logged in (test)" });
+    // Set cookie
+    const res = NextResponse.json({ message: "Logged in" });
     res.cookies.set({
       name: "token",
       value: token,
-      httpOnly: false, 
-      secure: false,  
+      httpOnly: false,
+      secure: false,
       path: "/",
       maxAge: 60 * 60,
     });
