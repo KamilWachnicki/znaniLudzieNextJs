@@ -1,5 +1,5 @@
 import PageLayout from "@/components/PageLayout";
-import Addppl from "@/components/Addppl";
+import Addppl from "@/components/AddPeople";
 
 export default function Home() {
     return (
