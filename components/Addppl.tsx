@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PersonCard from "./PersonCard";
-import SearchBar from "./SearchBar";
+
 
 export default function PeoplePost() {
   const [query, setQuery] = useState("");
@@ -76,11 +76,9 @@ export default function PeoplePost() {
   );
 
   return (
-    <div className="flex flex-col w-full p-8 gap-6">
-      <SearchBar value={query} onChange={setQuery} placeholder="Szukaj..." />
-
+    <div className="flex flex-col w-full p-8 gap-6 text-black" >
       {/* Form to add a new person */}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 border p-4 rounded-md">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2 border p-4 rounded-md ">
         <input name="id" placeholder="ID" value={form.id} onChange={handleChange} required />
         <input name="name" placeholder="Imię i nazwisko" value={form.name} onChange={handleChange} required />
         <input name="shortDescription" placeholder="Krótki opis" value={form.shortDescription} onChange={handleChange} />
@@ -111,7 +109,7 @@ export default function PeoplePost() {
             />
           ))
         ) : (
-          <p className="text-gray-600">Nie znaleziono osób pasujących do wyszukiwania.</p>
+          <p className="text-black-600">Nie znaleziono osób pasujących do wyszukiwania.</p>
         )}
       </div>
     </div>
