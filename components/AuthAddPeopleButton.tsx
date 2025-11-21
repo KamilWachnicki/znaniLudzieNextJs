@@ -1,4 +1,4 @@
-import AddpplButton from "@/components/AddpplButton";
+import AddPeopleButton from "@/components/AddPeopleButton";
 import {cookies} from "next/headers";
 
 
@@ -7,5 +7,5 @@ export default async function AuthQrCodeButton() {
     const token = cookieStore.get("token")
 
     const isLoggedIn = !!token;
-    return isLoggedIn ? <AddpplButton /> : <div></div>;
+    return isLoggedIn ? <AddPeopleButton /> : <div></div>;
 }

@@ -44,8 +44,8 @@ export async function POST(req: NextRequest) {
     res.cookies.set({
       name: "token",
       value: token,
-      httpOnly: true, // should be true in production
-      secure: false, // true if using https
+      httpOnly: true,
+      secure: false,
       path: "/",
       maxAge: 60 * 60,
     });

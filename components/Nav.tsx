@@ -1,7 +1,7 @@
 import NavButton from "./NavButton";
 import Image from "next/image";
 import AuthLoginButton from "./AuthLoginButton";
-import AuthAddpplButton from "./AuthAddpplButton";
+import AuthAddpplButton from "./AuthAddPeopleButton";
 import AuthQrCodeButton from "./AuthQrCodeButton";
 import CookiePrompt from "./CookiePrompt";
 
