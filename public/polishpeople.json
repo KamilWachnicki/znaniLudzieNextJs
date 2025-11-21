@@ -1,0 +1,80 @@
+[
+  {
+    "id": "1",
+    "name": "Władysław Szpilman",
+    "shortDescription": "Wybitny polski pianista, kompozytor i autor setek piosenek, cudownie ocalały z warszawskiego getta.",
+    "description": "Władysław Szpilman (ur. 5 grudnia 1911 w Sosnowcu, zm. 6 lipca 2000 w Warszawie), znany jako „Pianista”, był jedną z najważniejszych postaci polskiej muzyki XX wieku. Kształcił się w Warszawie i Berlinie, a jego karierę przerwał wybuch II wojny światowej. Cudem uniknął wywózki do obozu zagłady w Treblince i przeżył likwidację getta warszawskiego, ukrywając się w ruinach miasta, gdzie pomógł mu niemiecki oficer Wilm Hosenfeld. Po wojnie wrócił do pracy w Polskim Radiu, reaktywując przerwane w 1939 roku audycje. Był nie tylko wirtuozem muzyki poważnej i twórcą Warszawskiego Kwintetu Fortepianowego, ale także autorem ponad 500 popularnych piosenek, które nuciła cała Polska (m.in. „Tych lat nie odda nikt”). Jego wojenne losy stały się kanwą oscarowego filmu Romana Polańskiego.",
+    "category": "Artist / Kompozytor",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/W%C5%82adys%C5%82aw_Szpilman.jpg/330px-W%C5%82adys%C5%82aw_Szpilman.jpg",
+    "birthDate": "1911-12-05",
+    "deathDate": "2000-07-06",
+    "href": "/people/1",
+    "lat": 52.2297,
+    "lng": 21.0122
+  },
+  {
+    "id": "2",
+    "name": "Stefan Kuryłowicz",
+    "shortDescription": "Wybitny polski architekt i profesor, główny projektant nowoczesnego oblicza powojennej Warszawy.",
+    "description": "Stefan Kuryłowicz (ur. 26 marca 1949 w Warszawie, zm. 6 czerwca 2011 w Hiszpanii) to ikona polskiej architektury przełomu wieków i założyciel prestiżowej pracowni APA Kuryłowicz & Associates. Miał kluczowy wpływ na zmianę krajobrazu Warszawy po 1989 roku, wprowadzając do miasta światowe trendy i odważne, nowoczesne formy. Do jego najsłynniejszych realizacji należą biurowiec Focus Filtrowa, siedziba PLL LOT, dom handlowy Vitkac oraz stacja metra Dworzec Gdański. Był cenionym wykładowcą Politechniki Warszawskiej i autorytetem w środowisku, posiadającym uprawnienia architekta z pełnymi prawami w Polsce. Zginął tragicznie w wypadku awionetki w hiszpańskiej Asturii, pozostawiając po sobie trwały ślad w tkance miejskiej stolicy.",
+    "category": "Architecture",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Warszawa-Stefan_Kury%C5%82owicz_monument_%283%29.jpg/500px-Warszawa-Stefan_Kury%C5%82owicz_monument_%283%29.jpg",
+    "birthDate": "1949-03-26",
+    "deathDate": "2011-06-06",
+    "href": "/people/2",
+    "lat": 52.2297,
+    "lng": 21.0122
+  },
+  {
+    "id": "3",
+    "name": "Józef Ignacy Kraszewski",
+    "shortDescription": "Niezwykle płodny polski pisarz, historyk i encyklopedysta, rekordzista w liczbie wydanych powieści.",
+    "description": "Józef Ignacy Kraszewski (ur. 28 lipca 1812 w Warszawie, zm. 19 marca 1887 w Genewie) to tytan polskiej literatury i człowiek-instytucja. Jest uznawany za jednego z najpłodniejszych pisarzy w historii świata – jego dorobek obejmuje ponad 220 powieści w około 600 tomach, nie licząc prac historycznych, publicystyki i dramatów. Największą sławę przyniósł mu cykl powieści historycznych „Dzieje Polski”, w tym sfilmowana „Stara baśń”. Kraszewski był również utalentowanym malarzem, rysownikiem i pianistą. Przez lata angażował się w działalność patriotyczną i społeczną, co zmusiło go do emigracji do Drezna. Jego twórczość odegrała kluczową rolę w kształtowaniu świadomości narodowej Polaków w okresie zaborów.",
+    "category": "Literatura",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Józef_Ignacy_Kraszewski.PNG",
+    "birthDate": "1812-07-28",
+    "deathDate": "1887-03-19",
+    "href": "/people/3",
+    "lat": 52.2297,
+    "lng": 21.0122
+  },
+  {
+    "id": "4",
+    "name": "Iga Świątek",
+    "shortDescription": "Polska tenisistka, liderka rankingu WTA i dominatorka kortów ziemnych, w tym Roland Garros.",
+    "description": "Iga Natalia Świątek (ur. 31 maja 2001 w Warszawie) to fenomen światowego tenisa i pierwsza Polka w historii, która została liderką rankingu WTA. Swoją pozycję w elicie ugruntowała, wygrywając turniej French Open (Roland Garros) w 2020 roku bez straty seta, co rozpoczęło pasmo jej wielkoszlemowych sukcesów, w tym triumf w US Open. Córka olimpijczyka Tomasza Świątka, Iga słynie z niezwykłej siły mentalnej, agresywnego stylu gry opartego na potężnym topspinie oraz doskonałego poruszania się po korcie. Jest jedną z najbardziej rozpoznawalnych polskich sportsmenek na świecie, a jej sukcesy przyczyniły się do ogromnego wzrostu popularności tenisa w Polsce.",
+    "category": "Sport",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Iga_%C5%9Awi%C4%85tek_%282023_US_Open%29_09_%28cropped%29.jpg/330px-Iga_%C5%9Awi%C4%85tek_%282023_US_Open%29_09_%28cropped%29.jpg",
+    "birthDate": "2001-05-31",
+    "deathDate": null,
+    "href": "/people/4",
+    "lat": 52.2297,
+    "lng": 21.0122
+  },
+  {
+    "id": "5",
+    "name": "Stefan Starzyński",
+    "shortDescription": "Legendarny prezydent Warszawy, major Wojska Polskiego i bohaterski dowódca Obrony Cywilnej w 1939 roku.",
+    "description": "Stefan Bronisław Starzyński (ur. 19 sierpnia 1893 w Warszawie, zm. grudzień 1939) zapisał się w historii jako wzór patrioty i samorządowca. W latach 30. jako prezydent Warszawy dynamicznie modernizował stolicę, promując hasło „Warszawa w kwiatach” i planując budowę metra. W obliczu wybuchu II wojny światowej odmówił ewakuacji i pozostał z mieszkańcami do samego końca jako Komisarz Cywilny przy Dowództwie Obrony Warszawy. Jego charyzmatyczne przemówienia radiowe podtrzymywały ducha walczącego miasta. Po kapitulacji stolicy został aresztowany przez Niemców. Jego słynne słowa: „Chciałem, by Warszawa była wielka [...] I dziś widzę ją wielką”, stały się symbolem niezłomności miasta.",
+    "category": "Polityka / Historia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Stefan_Starzynski.jpg/330px-Stefan_Starzynski.jpg",
+    "birthDate": "1893-08-19",
+    "deathDate": "1939-12-23",
+    "href": "/people/5",
+    "lat": 52.2297,
+    "lng": 21.0122
+  },
+  {
+    "id": "6",
+    "name": "Maria Skłodowska‑Curie",
+    "shortDescription": "Polska uczona wszech czasów, pionierka radiochemii i pierwsza kobieta z profesurą na Sorbonie.",
+    "description": "Maria Salomea Skłodowska‑Curie (ur. 7 listopada 1867 w Warszawie, zm. 4 lipca 1934) to jedna z najważniejszych postaci w historii nauki. Jest jedyną kobietą, która dwukrotnie otrzymała Nagrodę Nobla, i jedynym uczonym uhonorowanym w dwóch różnych dziedzinach nauk przyrodniczych (fizyka w 1903 i chemia w 1911). Jej badania nad promieniotwórczością doprowadziły do odkrycia dwóch nowych pierwiastków: polonu i radu. Podczas I wojny światowej zorganizowała służbę radiologiczną (tzw. „małe Curie”), ratując życie tysiącom żołnierzy. Była pierwszą kobietą, która spoczęła w paryskim Panteonie w dowód uznania zasług naukowych. Założyła Instytut Radowy w Paryżu oraz jego odpowiednik w Warszawie, kładąc podwaliny pod nowoczesną onkologię.",
+    "category": "Nauka",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c._1898.jpg",
+    "birthDate": "1867-11-07",
+    "deathDate": "1934-07-04",
+    "href": "/people/6",
+    "lat": 52.2297,
+    "lng": 21.0122
+  }
+]
