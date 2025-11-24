@@ -14,8 +14,8 @@ export async function POST(req: NextRequest) {
   const existingUser = await users.findOne({ name });
   if (existingUser) return NextResponse.json({ error: "User already exists" }, { status: 409 });
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-  await users.insertOne({ name, password: hashedPassword });
+  const hashedPassword = await bcrypt.hash(password, 12);
+  await users.insertOne({ name, passwordHash: hashedPassword });
 
   return NextResponse.json({ message: "User created" }, { status: 201 });
 }
