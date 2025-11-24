@@ -171,6 +171,7 @@ export default function ContentPost() {
                         <input
                             name="birthDate"
                             placeholder="Data urodzenia"
+                            type="date"
                             value={f.birthDate}
                             onChange={(e) => handleChange(e, false)}
                             className="border p-2 rounded-md text-black"
@@ -179,6 +180,7 @@ export default function ContentPost() {
                         <input
                             name="deathDate"
                             placeholder="Data śmierci"
+                            type="date"
                             value={f.deathDate}
                             onChange={(e) => handleChange(e, false)}
                             className="border p-2 rounded-md text-black"
