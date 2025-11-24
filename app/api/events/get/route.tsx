@@ -14,12 +14,21 @@ export async function GET(req: Request) {
         const { searchParams } = new URL(req.url);
         const id = searchParams.get("id");
 
-        let filter = {};
-        if (id) filter = { id };
+        if (id) {
+            const data = await collection.find({ id }).toArray();
+            return NextResponse.json(data);
+        }
 
-        const data = await collection.find(filter).toArray();
+        const maxDoc = await collection
+            .find({})
+            .sort({ id: -1 })
+            .limit(1)
+            .toArray();
 
-        return NextResponse.json(data);
+        const maxId = maxDoc[0]?.id || 0;
+
+        return NextResponse.json({ maxId });
+
     } catch (err) {
         console.error("MongoDB fetch error:", err);
         return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
