@@ -13,5 +13,15 @@ export async function POST() {
     path: "/",
   });
 
+    res.cookies.set({
+    name: "adminToken",
+    value: "",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 0,
+    path: "/",
+  });
+
   return res;
 }
