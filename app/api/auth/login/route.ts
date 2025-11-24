@@ -25,13 +25,13 @@ export async function POST(req: NextRequest) {
     // Find user in DB
     const user = await usersCollection.findOne({ name });
     if (!user) {
-      return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid username" }, { status: 401 });
     }
 
     // Password check
     const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
     if (!isPasswordValid) {
-      return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid password" }, { status: 401 });
     }
 
     // Create JWT token
