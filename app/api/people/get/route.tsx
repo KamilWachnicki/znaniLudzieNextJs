@@ -10,15 +10,16 @@ export async function GET(req: Request) {
         await client.connect();
         const db = client.db("znani_ludzie");
         const collection = db.collection("people");
-        const maxDoc = await collection
-            .find({})
-            .sort({ id: -1 })
-            .limit(1)
-            .toArray();
 
-        const maxId = maxDoc[0]?.id || null;
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get("id");
 
-        return NextResponse.json({ maxId });
+        let filter = {};
+        if (id) filter = { id };
+
+        const data = await collection.find(filter).toArray();
+
+        return NextResponse.json(data);
     } catch (err) {
         console.error("MongoDB fetch error:", err);
         return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });

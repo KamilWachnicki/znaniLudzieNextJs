@@ -48,7 +48,7 @@ export default function ContentPost() {
     // --- AUTO INCREMENT LOGIC (For both Person and Event) ---
     useEffect(() => {
         const fetchNextId = async () => {
-            const endpoint = mode === "person" ? "/api/people/get" : "/api/events/get";
+            const endpoint = mode === "person" ? "/api/people/getMaxId" : "/api/events/getMaxId";
             
             try {
                 const res = await fetch(endpoint);
@@ -325,7 +325,7 @@ export default function ContentPost() {
                                 placeholder="52.2297"
                                 type="number"
                                 step="0.0001"
-                                value={f.lat}
+                                value={isNaN(f.lat) ? "" : f.lat}
                                 onChange={(e) => handleChange(e, isEvent)}
                                 className="border p-2 rounded-md text-black w-full"
                             />
@@ -338,7 +338,7 @@ export default function ContentPost() {
                                 placeholder="21.0122"
                                 type="number"
                                 step="0.0001"
-                                value={f.lng}
+                                value={isNaN(f.lng) ? "" : f.lng}
                                 onChange={(e) => handleChange(e, isEvent)}
                                 className="border p-2 rounded-md text-black w-full"
                             />
