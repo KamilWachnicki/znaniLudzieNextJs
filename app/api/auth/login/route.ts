@@ -34,6 +34,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid password" }, { status: 401 });
     }
 
+    let tokenName = "token"
+    if(user.name == "admin") {
+      tokenName = "adminToken"
+    }
+
     // Create JWT token
     const token = jwt.sign({ name: user.name }, "TEST_SECRET", {
       expiresIn: "1h",
@@ -42,7 +47,7 @@ export async function POST(req: NextRequest) {
     // Set cookie
     const res = NextResponse.json({ message: "Logged in" });
     res.cookies.set({
-      name: "token",
+      name: tokenName,
       value: token,
       httpOnly: true,
       secure: false,
