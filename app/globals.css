@@ -30,3 +30,8 @@ body {
     size: landscape;
   }
 }
+
+.leaflet-popup-content a {
+  opacity: 1 !important;
+  color: inherit !important;
+}

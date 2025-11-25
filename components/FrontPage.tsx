@@ -9,6 +9,7 @@ type Item = {
   name: string;
   shortDescription: string;
   description: string;
+  href: string;
   lat?: number;
   lng?: number;
   category: "people" | "events";
@@ -41,6 +42,7 @@ export default function FrontPage() {
           id: `person-${p.id}`,
           name: p.name,
           description: p.shortDescription,
+          href: p.href,
           lat: p.lat,
           lng: p.lng,
           category: "people",
@@ -50,6 +52,7 @@ export default function FrontPage() {
           id: `event-${e.id}`,
           name: e.name,
           description: e.shortDescription,
+          href: e.href,
           lat: e.lat,
           lng: e.lng,
           category: "events",

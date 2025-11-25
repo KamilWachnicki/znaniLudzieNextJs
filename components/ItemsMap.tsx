@@ -4,12 +4,14 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import L from "leaflet";
+import Link from "next/link";
 
 type Item = {
   id: string;
   name: string;
   shortDescription: string;
   description: string;
+  href: string;
   lat?: number;
   lng?: number;
   category: "people" | "events";
@@ -68,6 +70,14 @@ export default function ItemsMap({ items }: ItemsMapProps) {
               {item.description}
               <br />
               <em>{item.category === "people" ? "Osoba" : "Wydarzenie"}</em>
+              <br />
+              <Link
+                href={item.href}
+                className="mt-2 inline-block px-3 py-1 rounded text-sm font-medium bg-blue-600 !!text-white
+                 hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                 focus:ring-offset-1 visited:text-white">
+                Zobacz więcej
+              </Link>
             </Popup>
           </Marker>
         ))}
