@@ -56,12 +56,12 @@ export default function QrCodeGenerator() {
     }, [items, query]);
 
     const handleSelect = (id: string) => {
-        setSelectedItem(id); // select only one item
+        setSelectedItem(id);
     };
 
     const handleGenerateQr = () => {
         if (!selectedItem) return;
-        router.push(`/generatedQrCode?id=${selectedItem}`);
+        router.push(`/generatedQrCode?id=${selectedItem}&category=${selectedCategory}`);
     };
 
     return (

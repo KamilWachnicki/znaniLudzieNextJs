@@ -7,9 +7,9 @@ type QRCardProps = {
     id: string;
     title: string;
     description: string;
-    category?: string;       // for people
-    startDate?: string;      // for events
-    endDate?: string;        // for events
+    category?: string;
+    startDate?: string;
+    endDate?: string;
     image: string;
     selected?: boolean;
     onClick?: MouseEventHandler<HTMLButtonElement>;
