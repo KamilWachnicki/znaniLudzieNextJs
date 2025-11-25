@@ -64,7 +64,7 @@ export default function GeneratedQrCode() {
 
   let displayDate = "";
 
-  if (item.category === "people") {
+  if (searchParams.get("category") === "people") {
     const birth = format(item.birthDate);
     const death = format(item.deathDate);
 
