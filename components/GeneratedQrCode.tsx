@@ -51,6 +51,13 @@ export default function GeneratedQrCode() {
     fetchItem();
   }, [searchParams]);
 
+  // Trigger print once item & QR code are ready
+  useEffect(() => {
+    if (item && qrDataUrl) {
+      window.print();
+    }
+  }, [item, qrDataUrl]);
+
   if (!item) return <p className="text-center mt-20">Ładowanie...</p>;
 
   const format = (date: string | undefined) => {
@@ -81,15 +88,14 @@ export default function GeneratedQrCode() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 p-10">
-      <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-6xl w-full flex flex-row items-center gap-10">
-
+      <div className="bg-white rounded-3xl p-10 max-w-6xl w-full flex flex-row items-center gap-10">
         {/* LEFT: QR */}
         <div className="flex flex-col items-center shrink-0">
           {qrDataUrl && (
             <img
               src={qrDataUrl}
               alt="QR Code"
-              className="w-80 h-80 rounded-2xl shadow-xl"
+              className="w-80 h-80 rounded-2xl"
             />
           )}
 
