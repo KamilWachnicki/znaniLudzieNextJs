@@ -44,17 +44,21 @@ export default function ContentPost() {
 
     const [personForm, setPersonForm] = useState(emptyPerson);
     const [eventForm, setEventForm] = useState(emptyEvent);
+    const [errors, setErrors] = useState({
+        image: "",
+    });
+
 
     // --- AUTO INCREMENT LOGIC (For both Person and Event) ---
     useEffect(() => {
         const fetchNextId = async () => {
             const endpoint = mode === "person" ? "/api/people/getMaxId" : "/api/events/getMaxId";
-            
+
             try {
                 const res = await fetch(endpoint);
                 if (res.ok) {
                     const data = await res.json();
-                    
+
                     // Logic: Parse maxId -> Increment -> Convert to string
                     // Note: If maxId is "5", next is "6". If null/undefined, starts at "1".
                     const currentMax = data.maxId ? parseInt(data.maxId) : 0;
@@ -82,7 +86,7 @@ export default function ContentPost() {
         fetchNextId();
     }, [mode]); // Re-run whenever the user switches tabs
 
-    const handleChange = (
+    const handleChange = async (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         isEvent: boolean
     ) => {
@@ -98,6 +102,24 @@ export default function ContentPost() {
                 ...prev,
                 [name]: name === "lat" || name === "lng" ? parseFloat(value) : value,
             }));
+        }
+        if (name === "image") {
+            if (!value) {
+                setErrors((prev) => ({ ...prev, image: "" }));
+                return;
+            }
+
+            try {
+                const res = await fetch(value, { method: "HEAD" });
+
+                if (!res.ok) {
+                    setErrors((prev) => ({ ...prev, image: "Nie można odnaleźć obrazu pod tym adresem." }));
+                } else {
+                    setErrors((prev) => ({ ...prev, image: "" }));
+                }
+            } catch {
+                setErrors((prev) => ({ ...prev, image: "Nie można połączyć się z adresem URL." }));
+            }
         }
     };
 
@@ -165,18 +187,16 @@ export default function ContentPost() {
                     <button
                         type="button"
                         onClick={() => setMode("person")}
-                        className={`px-3 py-2 rounded-md border flex-1 transition ${
-                            mode === "person" ? "bg-blue-600 text-white" : "bg-gray-200 text-black hover:bg-gray-300"
-                        }`}
+                        className={`px-3 py-2 rounded-md border flex-1 transition ${mode === "person" ? "bg-blue-600 text-white" : "bg-gray-200 text-black hover:bg-gray-300"
+                            }`}
                     >
                         Osoba
                     </button>
                     <button
                         type="button"
                         onClick={() => setMode("event")}
-                        className={`px-3 py-2 rounded-md border flex-1 transition ${
-                            mode === "event" ? "bg-blue-600 text-white" : "bg-gray-200 text-black hover:bg-gray-300"
-                        }`}
+                        className={`px-3 py-2 rounded-md border flex-1 transition ${mode === "event" ? "bg-blue-600 text-white" : "bg-gray-200 text-black hover:bg-gray-300"
+                            }`}
                     >
                         Wydarzenie
                     </button>
@@ -200,8 +220,8 @@ export default function ContentPost() {
                         name="name"
                         placeholder={isEvent ? "Np. Powstanie Warszawskie" : "Np. Jan Kowalski"}
                         value={f.name}
+                        required = {true}
                         onChange={(e) => handleChange(e, isEvent)}
-                        required
                         className="border p-2 rounded-md text-black"
                     />
                 </InputGroup>
@@ -211,6 +231,7 @@ export default function ContentPost() {
                         name="shortDescription"
                         placeholder="Zwięzłe podsumowanie"
                         value={f.shortDescription}
+                        required = {true}
                         onChange={(e) => handleChange(e, isEvent)}
                         className="border p-2 rounded-md text-black"
                     />
@@ -221,19 +242,26 @@ export default function ContentPost() {
                         name="description"
                         placeholder="Szczegółowy opis..."
                         value={f.description}
+                        required = {true}
                         onChange={(e) => handleChange(e, isEvent)}
                         className="border p-2 rounded-md text-black h-28 resize-none"
                     />
                 </InputGroup>
-
                 <InputGroup label="Zdjęcie (URL)">
-                    <input
-                        name="image"
-                        placeholder="https://..."
-                        value={f.image}
-                        onChange={(e) => handleChange(e, isEvent)}
-                        className="border p-2 rounded-md text-black"
-                    />
+                    <>
+                        <input
+                            name="image"
+                            placeholder="https://..."
+                            value={f.image}
+                            required = {true}
+                            onChange={(e) => handleChange(e, isEvent)}
+                            className={`border p-2 rounded-md text-black ${errors.image ? "border-red-500" : ""
+                                }`}
+                        />
+                        {errors.image && (
+                            <p className="text-red-600 text-sm ml-1">{errors.image}</p>
+                        )}
+                    </>
                 </InputGroup>
 
                 {/* PERSON-ONLY FIELDS */}
@@ -246,6 +274,7 @@ export default function ContentPost() {
                                         name="birthDate"
                                         type="date"
                                         value={f.birthDate}
+                                        required = {true}
                                         onChange={(e) => handleChange(e, false)}
                                         className="border p-2 rounded-md text-black w-full"
                                     />
@@ -257,6 +286,7 @@ export default function ContentPost() {
                                         name="deathDate"
                                         type="date"
                                         value={f.deathDate}
+                                        required = {true}
                                         onChange={(e) => handleChange(e, false)}
                                         className="border p-2 rounded-md text-black w-full"
                                     />
@@ -269,6 +299,7 @@ export default function ContentPost() {
                                 name="category"
                                 placeholder="Np. Nauka, Sport, Polityka"
                                 value={f.category}
+                                required = {true}
                                 onChange={(e) => handleChange(e, false)}
                                 className="border p-2 rounded-md text-black"
                             />
@@ -286,6 +317,7 @@ export default function ContentPost() {
                                         name="startDate"
                                         type="date"
                                         value={f.startDate}
+                                        required = {true}
                                         onChange={(e) => handleChange(e, true)}
                                         className="border p-2 rounded-md text-black w-full"
                                     />
@@ -297,6 +329,7 @@ export default function ContentPost() {
                                         name="endDate"
                                         type="date"
                                         value={f.endDate}
+                                        required = {true}
                                         onChange={(e) => handleChange(e, true)}
                                         className="border p-2 rounded-md text-black w-full"
                                     />
@@ -311,6 +344,8 @@ export default function ContentPost() {
                     <input
                         name="href"
                         placeholder={`/api/${isEvent ? 'events' : 'people'}/get?id=...`}
+                        disabled = {true}
+                        required = {true}
                         value={f.href}
                         onChange={(e) => handleChange(e, isEvent)}
                         className="border p-2 rounded-md text-black"
@@ -325,6 +360,7 @@ export default function ContentPost() {
                                 placeholder="52.2297"
                                 type="number"
                                 step="0.0001"
+                                required = {true}
                                 value={isNaN(f.lat) ? "" : f.lat}
                                 onChange={(e) => handleChange(e, isEvent)}
                                 className="border p-2 rounded-md text-black w-full"
@@ -338,6 +374,7 @@ export default function ContentPost() {
                                 placeholder="21.0122"
                                 type="number"
                                 step="0.0001"
+                                required = {true}
                                 value={isNaN(f.lng) ? "" : f.lng}
                                 onChange={(e) => handleChange(e, isEvent)}
                                 className="border p-2 rounded-md text-black w-full"
