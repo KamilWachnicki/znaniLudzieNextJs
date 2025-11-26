@@ -1,5 +1,4 @@
 import PageLayout from "@/components/PageLayout";
-import PersonDetails from "./PersonDetails";
 import PersonMap from "./PersonMap";
 
 interface Person {
